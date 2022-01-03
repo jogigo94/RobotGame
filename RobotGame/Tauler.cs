@@ -16,7 +16,9 @@ namespace RobotGame
         int numColumnes;
         Posicio[,] terreny;
         Random r=new Random();
-        
+        Robot robot;
+
+
         public Tauler(int files, int columnes)
         {
             this.NumFiles = files;
@@ -67,7 +69,7 @@ namespace RobotGame
         {
             int fila = r.Next(numFiles);
             int columna = r.Next(numColumnes);
-            Robot robot = new Robot(fila, columna);
+             robot = new Robot(fila, columna);
             
             terreny[fila,columna] =robot;
             robot.ImgIcona = new BitmapImage(new Uri("/Images/LuffySud.png", UriKind.Relative));
@@ -83,6 +85,117 @@ namespace RobotGame
 
             this.Children.Add(tresor);
         }
+        public void movimentRobot()
+        {
+            
+            
+            switch (robot.OnMira)
+            {
+                case Direccio.Sud:
+                    Mou(robot.Fila, robot.Columna, robot.Fila + 1, robot.Columna);
+                    break;
+                case Direccio.Est:
+                    Mou(robot.Fila, robot.Columna, robot.Fila , robot.Columna+1);
+                    break;
+                case Direccio.Oest:
+                    Mou(robot.Fila, robot.Columna, robot.Fila , robot.Columna-1);
+                    break;
+                case Direccio.Nord:
+                    Mou(robot.Fila, robot.Columna, robot.Fila - 1, robot.Columna);
+                    break;
+            }
+        }
 
+        public void posicioRobot()
+        {
+            int atzar = r.Next(0,4);
+            if (atzar == 0)
+            {
+                GirarEsquerra();
+            }
+            else if (atzar == 1)
+            {
+                GiraDreta();
+            }
+            else 
+            {
+                movimentRobot();
+            }
+            ActualitzarImatge();
+        }
+
+        private void GiraDreta()
+        {
+            switch (robot.OnMira)
+            {
+                case Direccio.Sud:
+                    robot.OnMira = Direccio.Oest;
+                    break;
+                case Direccio.Est:
+                    robot.OnMira = Direccio.Sud;
+                    break;
+                case Direccio.Oest:
+                    robot.OnMira = Direccio.Nord;
+                    break;
+                case Direccio.Nord:
+                    robot.OnMira = Direccio.Est;
+                    break;
+            }
+        }
+
+        private void GirarEsquerra()
+        {
+            switch (robot.OnMira)
+            {
+                case Direccio.Sud:
+                    robot.OnMira = Direccio.Est;
+                    break;
+                case Direccio.Est:
+                    robot.OnMira = Direccio.Nord;
+                    break;
+                case Direccio.Oest:
+                    robot.OnMira = Direccio.Sud;
+                    break;
+                case Direccio.Nord:
+                    robot.OnMira = Direccio.Oest;
+                    break;
+            }
+            
+        }
+
+        private void ActualitzarImatge()
+        {
+            switch (robot.OnMira)
+            {
+                case Direccio.Sud:
+                    robot.ImgIcona = new BitmapImage(new Uri("/Images/LuffySud.png", UriKind.Relative));
+                    break;
+                case Direccio.Est:
+                    robot.ImgIcona = new BitmapImage(new Uri("/Images/LuffyEst.png", UriKind.Relative));
+                    break;
+                case Direccio.Oest:
+                    robot.ImgIcona = new BitmapImage(new Uri("/Images/LuffyOest.png", UriKind.Relative));
+                    break;
+                case Direccio.Nord:
+                    robot.ImgIcona = new BitmapImage(new Uri("/Images/LuffyNord.png", UriKind.Relative));
+                    break;
+            }
+        }
+
+        public void Mou(int filOrig, int colOrig, int filDesti, int colDesti)
+        {
+            if (DestiValid(filDesti, colDesti))
+            {
+                Posicio origen = terreny[filOrig, colOrig];
+                terreny[filOrig, colOrig] = new Posicio(filOrig, colOrig);
+                origen.Fila = filDesti;
+                origen.Columna = colDesti;
+                terreny[filDesti, colDesti] = origen;
+                terreny[filDesti, colDesti].SetValue(Grid.RowProperty, filDesti);
+                terreny[filDesti, colDesti].SetValue(Grid.ColumnProperty, colDesti);
+
+            }
+
+        }
     }
 }

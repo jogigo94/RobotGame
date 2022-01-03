@@ -8,7 +8,11 @@ namespace RobotGame
 {
     public class Robot:Posicio
     {
-        public Robot(int fila, int columna) : base(fila, columna) { }
+        Direccio onMira;
+        public Robot(int fila, int columna) : base(fila, columna) 
+        {
+            this.OnMira = Direccio.Sud;
+        }
 
         public override bool Buida
         {
@@ -16,5 +20,6 @@ namespace RobotGame
         }
         public override bool EsRobot { get=>true; }
         public override bool EsTresor { get => false; }
+        public Direccio OnMira { get => onMira; set => onMira = value; }
     }
 }

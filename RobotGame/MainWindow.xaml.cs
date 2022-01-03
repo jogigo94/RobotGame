@@ -32,12 +32,12 @@ namespace RobotGame
             timer.Start();
             InitializeComponent();
             grdTaulell.Children.Add(joc);
-            
+            grdTaulell.Background = Brushes.CadetBlue;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            
+            joc.posicioRobot();
         }
 
         
