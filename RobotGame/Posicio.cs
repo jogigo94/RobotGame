@@ -14,34 +14,32 @@ namespace RobotGame
         public static Random random = new Random();
         protected int fila;
         protected int columna;
-        private Image imgIcona = new Image();
-       
+        private Image imgIcona;
+        private DockPanel contingut = new DockPanel();
 
         /// <summary>
         /// Crea una nova posició
         /// </summary>
         /// <param name="fil">Fila de la Posició</param>
         /// <param name="col">Columna de la Posició</param>
-        public Posicio(int fil, int col) : this("", fil, col)
-        {
 
 
-
-        }
-
-        public Posicio(string nom, int fil, int col)
+        public Posicio( int fil, int col)
         {
             this.fila = fil;
             this.columna = col;
             this.BorderBrush = Brushes.Black;
             this.BorderThickness = new Thickness(1);
             this.imgIcona = new Image();
+            
+            contingut.LastChildFill = true;
             imgIcona.SetValue(DockPanel.DockProperty, Dock.Top);
-           
+            contingut.Background = Brushes.Transparent;
+            contingut.Children.Add(imgIcona);
             this.SetValue(Grid.RowProperty, fil);
             this.SetValue(Grid.ColumnProperty, col);
+            AddChild(contingut);
 
-            AddChild(this);
 
         }
 
