@@ -21,14 +21,15 @@ namespace RobotGame
     /// </summary>
     public partial class MainWindow : Window
     {
-        const int NFILES = 5, NCOLUMNES = 5;
+        const int NFILES = 3, NCOLUMNES = 3;
         Tauler joc;
+        
         DispatcherTimer timer = new DispatcherTimer();
         public MainWindow()
         {
             joc = new Tauler(NFILES,NCOLUMNES);
             timer.Tick += Timer_Tick;
-            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Interval = new TimeSpan(0, 0,1);
             timer.Start();
             InitializeComponent();
             grdTaulell.Children.Add(joc);
@@ -38,6 +39,14 @@ namespace RobotGame
         private void Timer_Tick(object sender, EventArgs e)
         {
             joc.posicioRobot();
+            
+            if (joc.jocAcabat())
+            {
+                timer.Stop();
+                Window finestra = new wndFinal();
+                finestra.Show();
+
+            }
         }
 
         

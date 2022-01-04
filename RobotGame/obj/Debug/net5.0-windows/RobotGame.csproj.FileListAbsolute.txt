@@ -26,3 +26,5 @@ C:\Users\Jordi\Desktop\DAM 2n\M09 - PROGRAMACIÓ DE SERVEIS I PROCESSOS\UF1\Robo
 C:\Users\Jordi\Desktop\DAM 2n\M09 - PROGRAMACIÓ DE SERVEIS I PROCESSOS\UF1\RobotGame\RobotGame\bin\Debug\net5.0-windows\Images\LuffyNord.png
 C:\Users\Jordi\Desktop\DAM 2n\M09 - PROGRAMACIÓ DE SERVEIS I PROCESSOS\UF1\RobotGame\RobotGame\bin\Debug\net5.0-windows\Images\LuffyOest.png
 C:\Users\Jordi\Desktop\DAM 2n\M09 - PROGRAMACIÓ DE SERVEIS I PROCESSOS\UF1\RobotGame\RobotGame\bin\Debug\net5.0-windows\Images\tresor.png
+C:\Users\Jordi\Desktop\DAM 2n\M09 - PROGRAMACIÓ DE SERVEIS I PROCESSOS\UF1\RobotGame\RobotGame\obj\Debug\net5.0-windows\wndFinal.g.cs
+C:\Users\Jordi\Desktop\DAM 2n\M09 - PROGRAMACIÓ DE SERVEIS I PROCESSOS\UF1\RobotGame\RobotGame\obj\Debug\net5.0-windows\wndFinal.baml
