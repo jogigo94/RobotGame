@@ -53,11 +53,7 @@ namespace RobotGame {
                 return;
             }
             _contentLoaded = true;
-<<<<<<< HEAD
-            System.Uri resourceLocater = new System.Uri("/RobotGame;V1.0.0.0;component/wndfinal.xaml", System.UriKind.Relative);
-=======
             System.Uri resourceLocater = new System.Uri("/RobotGame;component/wndfinal.xaml", System.UriKind.Relative);
->>>>>>> funcionalitatMenu
             
             #line 1 "..\..\..\wndFinal.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
