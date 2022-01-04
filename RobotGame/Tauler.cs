@@ -17,7 +17,7 @@ namespace RobotGame
         Posicio[,] terreny;
         Random r=new Random();
         Robot robot;
-
+        Tresor tresor;
 
         public Tauler(int files, int columnes)
         {
@@ -58,6 +58,12 @@ namespace RobotGame
             creaTresor();
         }
 
+        internal bool jocAcabat()
+        {
+            return robot.Fila == tresor.Fila && robot.Columna == tresor.Columna;
+            
+        }
+
         public int NumFiles { get => numFiles; set => numFiles = value; }
         public int NumColumnes { get => numColumnes; set => numColumnes = value; }
 
@@ -79,7 +85,7 @@ namespace RobotGame
         {
             int fila = r.Next(numFiles);
             int columna = r.Next(numColumnes);
-            Tresor tresor = new Tresor(fila, columna);
+            tresor = new Tresor(fila, columna);
             tresor.ImgIcona = new BitmapImage(new Uri("/Images/tresor.png", UriKind.Relative));
             terreny[fila, columna] = tresor;
 
@@ -87,8 +93,6 @@ namespace RobotGame
         }
         public void movimentRobot()
         {
-            
-            
             switch (robot.OnMira)
             {
                 case Direccio.Sud:
